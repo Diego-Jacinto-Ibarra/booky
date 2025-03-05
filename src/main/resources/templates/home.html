@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booky - Documentation</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>📚 Booky API</h1>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Documentación de la API Booky</h1>
+            <p>La forma más sencilla de gestionar y acceder a datos de libros para tus aplicaciones</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="api-section">
+            <h2 class="section-title">Introducción</h2>
+            <p>Booky API proporciona acceso a una extensa base de datos de libros, autores y categorías. Utiliza JSON
+                para todas las solicitudes y respuestas.</p>
+            <p>La URL base para todas las solicitudes es: <code>https://api.booky.com/v1</code></p>
+
+            <div class="fake-api-notice">
+                <h3>Fake API</h3>
+                <p><strong>Importante:</strong> Esta es una API de demostración (fake API) creada con fines educativos y
+                    de pruebas.</p>
+                <p>Las peticiones GET funcionan completamente y ofrecen múltiples filtros para explorar los datos.
+                    Sin embargo, las peticiones POST, PUT y DELETE son simplemente simuladas y no modifican ninguna
+                    base de datos real.</p>
+            </div>
+        </section>
+
+        <section class="api-section">
+            <h2 class="section-title">Endpoints</h2>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="http-method get">GET</span>
+                    <span class="endpoint-path">/books</span>
+                </div>
+                <div class="endpoint-body">
+                    <div class="endpoint-description">
+                        <p>Obtiene una lista de libros con opciones de filtrado y paginación.</p>
+                    </div>
+
+                    <h4>Parámetros</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>title</td>
+                                <td>String</td>
+                                <td>Filtra por título de libro</td>
+                            </tr>
+                            <tr>
+                                <td>author</td>
+                                <td>String</td>
+                                <td>Filtra por nombre de autor</td>
+                            </tr>
+                            <tr>
+                                <td>category</td>
+                                <td>String</td>
+                                <td>Filtra por categoría</td>
+                            </tr>
+                            <tr>
+                                <td>page</td>
+                                <td>Integer</td>
+                                <td>Número de página (por defecto: 1)</td>
+                            </tr>
+                            <tr>
+                                <td>limit</td>
+                                <td>Integer</td>
+                                <td>Resultados por página (por defecto: 20, máximo: 100)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Ejemplo de respuesta</h4>
+                    <div class="code-block">{
+                        "data": [
+                        {
+                        "id": "1",
+                        "title": "El nombre del viento",
+                        "author": "Patrick Rothfuss",
+                        "isbn": "978-8401337208",
+                        "category": "Fantasía",
+                        "publishDate": "2007-03-27",
+                        "description": "Crónica del asesino de reyes: primer día"
+                        },
+                        {
+                        "id": "2",
+                        "title": "1984",
+                        "author": "George Orwell",
+                        "isbn": "978-0451524935",
+                        "category": "Ciencia ficción",
+                        "publishDate": "1949-06-08",
+                        "description": "Distopía clásica sobre totalitarismo"
+                        }
+                        ],
+                        "meta": {
+                        "totalResults": 342,
+                        "page": 1,
+                        "limit": 20
+                        }
+                        }</div>
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="http-method get">GET</span>
+                    <span class="endpoint-path">/books/{id}</span>
+                </div>
+                <div class="endpoint-body">
+                    <div class="endpoint-description">
+                        <p>Obtiene los detalles completos de un libro específico por ID.</p>
+                    </div>
+
+                    <h4>Parámetros</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>id <span class="parameter-required">*</span></td>
+                                <td>String</td>
+                                <td>ID único del libro</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Ejemplo de respuesta</h4>
+                    <div class="code-block">{
+                        "id": "1",
+                        "title": "El nombre del viento",
+                        "author": "Patrick Rothfuss",
+                        "isbn": "978-8401337208",
+                        "category": "Fantasía",
+                        "publishDate": "2007-03-27",
+                        "description": "Crónica del asesino de reyes: primer día",
+                        "pages": 662,
+                        "language": "Español",
+                        "publisher": "Plaza & Janés",
+                        "coverImage": "https://api.booky.com/covers/el-nombre-del-viento.jpg"
+                        }</div>
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="http-method post">POST</span>
+                    <span class="endpoint-path">/books</span>
+                </div>
+                <div class="endpoint-body">
+                    <div class="endpoint-description">
+                        <p>Simula la creación de un nuevo libro. <strong>Nota:</strong> Al ser una API simulada, no se
+                            almacenan realmente los datos.</p>
+                    </div>
+
+                    <h4>Cuerpo de la solicitud</h4>
+                    <div class="code-block">{
+                        "title": "Título del libro",
+                        "author": "Nombre del autor",
+                        "isbn": "978-XXXXXXXXXX",
+                        "category": "Categoría",
+                        "publishDate": "YYYY-MM-DD",
+                        "description": "Descripción del libro",
+                        "pages": 300,
+                        "language": "Español",
+                        "publisher": "Editorial"
+                        }</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="api-section">
+            <h2 class="section-title">Ejemplo de uso</h2>
+            <div class="code-block">// Ejemplo con JavaScript
+                const fetchBooks = async () => {
+                try {
+                const response = await fetch('https://api.booky.com/v1/books?category=fantasy');
+
+                if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log(data);
+                } catch (error) {
+                console.error('Error fetching books:', error);
+                }
+                };</div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Booky API. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
