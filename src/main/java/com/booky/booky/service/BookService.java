@@ -2,8 +2,8 @@ package com.booky.booky.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.booky.booky.model.BookDataset;
-import com.booky.booky.repository.BookDatasetRepository;
+import com.booky.booky.model.Book;
+import com.booky.booky.repository.BookRepository;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import java.util.List;
 public class BookService {
 
     @Autowired
-    private BookDatasetRepository bookDatasetRepository;
+    private BookRepository bookDatasetRepository;
 
-       public List<BookDataset> getBooks() {
+    public List<Book> getBooks() {
         return bookDatasetRepository.findAll().stream().limit(500).toList();
     }
 }

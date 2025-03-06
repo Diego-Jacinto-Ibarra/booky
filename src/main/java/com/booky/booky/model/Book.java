@@ -6,7 +6,7 @@ import org.hibernate.annotations.Immutable;
 @Entity
 @Table(name = "booksdataset_clean")
 @Immutable
-public class BookDataset {
+public class Book {
     @Id
     private String title;
     private String authors;
@@ -16,7 +16,7 @@ public class BookDataset {
     private String publish_date;
     private String price;
 
-    public BookDataset() {
+    public Book() {
     }
 
     public String getTitle() {
