@@ -12,7 +12,7 @@ public class Book {
     private String authors;
     private String description;
     private String category;
-    private String pubisher;
+    private String publisher;
     private String publish_date;
     private String price;
 
@@ -31,8 +31,8 @@ public class Book {
     public String getCategory() {
         return category;
     }
-    public String getPubisher() {
-        return pubisher;
+    public String getPublisher() {
+        return publisher;
     }
     public String getPublish_date() {
         return publish_date;
