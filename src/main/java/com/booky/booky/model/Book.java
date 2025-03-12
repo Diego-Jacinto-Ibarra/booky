@@ -8,10 +8,10 @@ import org.hibernate.annotations.Immutable;
 @Immutable
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String title;
     private String authors;
+    @Column(columnDefinition = "TEXT")
     private String description;
     private String category;
     private String publisher;
@@ -19,6 +19,10 @@ public class Book {
     private Float price;
 
     public Book() {
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {
