@@ -14,7 +14,7 @@ public class Book {
     private String category;
     private String publisher;
     private String publish_date;
-    private String price;
+    private Float price;
 
     public Book() {
     }
@@ -37,7 +37,7 @@ public class Book {
     public String getPublish_date() {
         return publish_date;
     }
-    public String getPrice() {
+    public Float getPrice() {
         return price;
     }
 
