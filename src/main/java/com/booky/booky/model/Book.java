@@ -1,13 +1,15 @@
 package com.booky.booky.model;
+
 import jakarta.persistence.*;
 import org.hibernate.annotations.Immutable;
-
 
 @Entity
 @Table(name = "booksdataset_clean")
 @Immutable
 public class Book {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
     private String title;
     private String authors;
     private String description;
@@ -22,21 +24,27 @@ public class Book {
     public String getTitle() {
         return title;
     }
+
     public String getAuthors() {
         return authors;
     }
+
     public String getDescription() {
         return description;
     }
+
     public String getCategory() {
         return category;
     }
+
     public String getPublisher() {
         return publisher;
     }
+
     public String getPublish_date() {
         return publish_date;
     }
+
     public String getPrice() {
         return price;
     }
