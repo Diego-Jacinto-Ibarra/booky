@@ -8,8 +8,8 @@ import org.hibernate.annotations.Immutable;
 @Immutable
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String title;
     private String authors;
     private String description;
