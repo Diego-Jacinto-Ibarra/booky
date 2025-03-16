@@ -63,6 +63,11 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <td>id</td>
+                                <td>Integer</td>
+                                <td>Filtra por ID de libro</td>
+                            </tr>
+                            <tr>
                                 <td>title</td>
                                 <td>String</td>
                                 <td>Filtra por título de libro</td>
@@ -78,46 +83,53 @@
                                 <td>Filtra por categoría</td>
                             </tr>
                             <tr>
-                                <td>page</td>
-                                <td>Integer</td>
-                                <td>Número de página (por defecto: 1)</td>
+                                <td>publisher</td>
+                                <td>String</td>
+                                <td>Filtra por editorial</td>
                             </tr>
+                            <tr>
+                                <td>publish_date</td>
+                                <td>String</td>
+                                <td>Filtra por fecha de publicación (formato: Saturday, September 1, 2001)</td>
+                            </tr>
+                            <tr>
+                                <td>price</td>
+                                <td>Float</td>
+                                <td>Filtra por precio</td>
                             <tr>
                                 <td>limit</td>
                                 <td>Integer</td>
-                                <td>Resultados por página (por defecto: 20, máximo: 100)</td>
+                                <td>Resultados por página (por defecto: ???, máximo: ???)</td>
                             </tr>
                         </tbody>
                     </table>
 
                     <h4>Ejemplo de respuesta</h4>
-                    <div class="code-block">{
-                        "data": [
+                    <div class="code-block">[
                         {
-                        "id": "1",
-                        "title": "El nombre del viento",
-                        "author": "Patrick Rothfuss",
-                        "isbn": "978-8401337208",
-                        "category": "Fantasía",
-                        "publishDate": "2007-03-27",
-                        "description": "Crónica del asesino de reyes: primer día"
+                        "id": 1,
+                        "title": "Journey Through Heartsongs",
+                        "authors": "By Stepanek, Mattie J. T.",
+                        "description": "Collects poems written by the eleven-year-old muscular dystrophy patient,
+                        sharing his feelings and thoughts about his life, the deaths of his siblings, nature, faith, and
+                        hope.",
+                        "category": " Poetry , General",
+                        "publisher": "VSP Books",
+                        "publish_date": "Saturday, September 1, 2001",
+                        "price": 19.0
                         },
                         {
-                        "id": "2",
-                        "title": "1984",
-                        "author": "George Orwell",
-                        "isbn": "978-0451524935",
-                        "category": "Ciencia ficción",
-                        "publishDate": "1949-06-08",
-                        "description": "Distopía clásica sobre totalitarismo"
-                        }
-                        ],
-                        "meta": {
-                        "totalResults": 342,
-                        "page": 1,
-                        "limit": 20
-                        }
-                        }</div>
+                        "id": 2,
+                        "title": "In Search of Melancholy Baby",
+                        "authors": "By Aksyonov, Vassily, Heim, Michael Henry, and Bouis, Antonina W.",
+                        "description": "The Russian author offers an affectionate chronicle of life in the United
+                        States, with discussions of such topics as the European charm of Washington, D.C., and the
+                        American immigration bureaucracy",
+                        "category": " Biography & Autobiography , General",
+                        "publisher": "Random House",
+                        "publish_date": "Monday, June 1, 1987",
+                        "price": 4.0
+                        },</div>
                 </div>
             </div>
 
@@ -150,18 +162,18 @@
                     </table>
 
                     <h4>Ejemplo de respuesta</h4>
-                    <div class="code-block">{
-                        "id": "1",
-                        "title": "El nombre del viento",
-                        "author": "Patrick Rothfuss",
-                        "isbn": "978-8401337208",
-                        "category": "Fantasía",
-                        "publishDate": "2007-03-27",
-                        "description": "Crónica del asesino de reyes: primer día",
-                        "pages": 662,
-                        "language": "Español",
-                        "publisher": "Plaza & Janés",
-                        "coverImage": "https://api.booky.com/covers/el-nombre-del-viento.jpg"
+                    <div class="code-block">
+                        {
+                        "id": 1,
+                        "title": "Journey Through Heartsongs",
+                        "authors": "By Stepanek, Mattie J. T.",
+                        "description": "Collects poems written by the eleven-year-old muscular dystrophy patient,
+                        sharing his feelings and thoughts about his life, the deaths of his siblings, nature, faith, and
+                        hope.",
+                        "category": " Poetry , General",
+                        "publisher": "VSP Books",
+                        "publish_date": "Saturday, September 1, 2001",
+                        "price": 19.0
                         }</div>
                 </div>
             </div>
@@ -179,15 +191,15 @@
 
                     <h4>Cuerpo de la solicitud</h4>
                     <div class="code-block">{
-                        "title": "Título del libro",
-                        "author": "Nombre del autor",
-                        "isbn": "978-XXXXXXXXXX",
-                        "category": "Categoría",
-                        "publishDate": "YYYY-MM-DD",
-                        "description": "Descripción del libro",
-                        "pages": 300,
-                        "language": "Español",
-                        "publisher": "Editorial"
+                        "title": "Journey Through Heartsongs",
+                        "authors": "By Stepanek, Mattie J. T.",
+                        "description": "Collects poems written by the eleven-year-old muscular dystrophy patient,
+                        sharing his feelings and thoughts about his life, the deaths of his siblings, nature, faith, and
+                        hope.",
+                        "category": " Poetry , General",
+                        "publisher": "VSP Books",
+                        "publish_date": "Saturday, September 1, 2001",
+                        "price": 19.0
                         }</div>
                 </div>
             </div>
