@@ -12,9 +12,13 @@ import java.util.List;
 public class BookService {
 
     @Autowired
-    private BookRepository bookDatasetRepository;
+    private BookRepository bookRepository;
 
     public List<Book> getBooks() {
-        return bookDatasetRepository.findAll().stream().limit(500).toList();
+        return bookRepository.findAll().stream().limit(500).toList();
+    }
+
+    public List<Book> getBookByTitle(String title ){
+        return bookRepository.findByTitle(title);
     }
 }
