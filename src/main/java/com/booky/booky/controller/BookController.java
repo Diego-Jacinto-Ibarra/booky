@@ -20,13 +20,18 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping("/books")
-    public List<Book> listarProductos() {
+    public List<Book> listarProductos(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) Double price) {
+
+        if (title != null) {
+            return bookService.getBookByTitle(title);
+        }
+
+        if (price != null) {
+            return bookService.getBookByPrice(price);
+        }
+
         return bookService.getBooks();
     }
-
-    @GetMapping("/title")
-    public List<Book> getBookByTitle(@RequestParam(value = "title")String title) {
-        return bookService.getBookByTitle(title);
-    }
 }
-
