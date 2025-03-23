@@ -24,14 +24,8 @@ public class BookController {
             @RequestParam(required = false) String title,
             @RequestParam(required = false) Double price) {
 
-        if (title != null) {
-            return bookService.getBookByTitle(title);
-        }
+        bookService.findBooksByFilter(title, price);
 
-        if (price != null) {
-            return bookService.getBookByPrice(price);
-        }
-
-        return bookService.getBooks();
+        return bookService.getAllBooks();
     }
 }

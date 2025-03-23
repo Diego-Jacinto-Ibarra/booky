@@ -18,11 +18,23 @@ public class BookService {
         return bookRepository.findAll().stream().limit(500).toList();
     }
 
-    public List<Book> getBookByTitle(String title ){
-        return bookRepository.findByTitle(title);
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
     }
 
-    public List<Book> getBookByPrice(double price){
-        return bookRepository.findByPrice(price);
+    public List<Book> findBooksByFilter(String title, double price) {
+        List<Book> books = getAllBooks();
+
+        if (title != null) {
+            books = books.stream().filter(book -> book.getTitle().equals(title)).toList();
+        }
+
+        if (price != 0) {
+            books = books.stream().filter(book -> book.getPrice() == price).toList();
+        }
+
+        return books;
+
     }
+
 }
