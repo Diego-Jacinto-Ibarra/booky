@@ -1,13 +1,14 @@
 package com.booky.booky.service;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.apache.commons.text.similarity.LevenshteinDistance;
 
 import com.booky.booky.model.Book;
 import com.booky.booky.repository.BookRepository;
 
 import java.util.List;
 import java.util.concurrent.Flow.Publisher;
-
 
 @Service
 public class BookService {
@@ -30,23 +31,28 @@ public class BookService {
             return getBooks();
         }
         if (title != null) {
-            books = books.stream().filter(book -> book.getTitle().equals(title)).toList();
+            LevenshteinDistance levenshteinDistance = new LevenshteinDistance();
+            final int MAX_DISTANCE = 3;
+            books = books.stream()
+                    .filter(book -> levenshteinDistance.apply(book.getTitle().toLowerCase(),
+                            title.toLowerCase()) <= MAX_DISTANCE)
+                    .toList();
         }
 
         if (price != null) {
-            books = books.stream().filter(book -> Float.compare(book.getPrice(),price)==0).toList();
+            books = books.stream().filter(book -> Float.compare(book.getPrice(), price) == 0).toList();
 
         }
         if (authors != null) {
-            books = books.stream().filter(book -> book.getAuthors() == authors).toList();
+            books = books.stream().filter(book -> book.getAuthors().equals(authors)).toList();
         }
 
         if (category != null) {
-            books = books.stream().filter(book -> book.getCategory() == category).toList();
+            books = books.stream().filter(book -> book.getCategory().equals(category)).toList();
         }
 
         if (publisher != null) {
-            books = books.stream().filter(book -> book.getPublisher() == publisher).toList();
+            books = books.stream().filter(book -> book.getPublisher().equals(publisher)).toList();
         }
 
         if (books.size() == 0) {
