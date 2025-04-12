@@ -48,7 +48,17 @@ public class BookService {
         }
 
         if (category != null) {
-            books = books.stream().filter(book -> book.getCategory().equals(category)).toList();
+            books = books.stream().filter(book -> {
+                String[] categories = book.getCategory().split(","); // Separar las categorías
+                for (String cat : categories) {
+                    if (cat.trim().equalsIgnoreCase(category)) { // Comparar ignorando mayúsculas/minúsculas
+                        return true;
+                    }
+                }
+                return false;
+            })
+            .toList();
+            
         }
 
         if (publisher != null) {
